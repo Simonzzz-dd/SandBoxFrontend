@@ -21,7 +21,7 @@
     >
     </v-toolbar>
 
-    <v-container class="pa-0 bg-grey-lighten" fluid>
+    <v-container class="pa-0 bg-grey-lighten a" fluid>
       <v-row dense>
         <v-col
           class="pa-0 pt-1"

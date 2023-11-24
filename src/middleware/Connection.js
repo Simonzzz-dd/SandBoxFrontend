@@ -29,7 +29,7 @@ class ZimmoFlowServerConnection {
 
     if (response.ok) {
       const responseData = await response.json();
-
+      console.log(response)
       Cookies_.set("token", responseData.token);
       // You can perform additional processing on the response data here if needed
       return { sucess: "login was sucessful" };
