@@ -2,7 +2,7 @@ FROM node:21-alpine
 
 WORKDIR /frontend
 
-ENV HOSTLINK=http://sandbox_backend:3000
+ENV HOSTLINK=https://localhost:3500
 
 COPY ./package.json .
 
@@ -12,4 +12,4 @@ COPY . .
 
 EXPOSE 8080
 
-CMD ["yarn", "dev", "--host", "0.0.0.0"]
+CMD ["yarn", "dev"]

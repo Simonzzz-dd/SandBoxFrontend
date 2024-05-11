@@ -29,7 +29,7 @@ export default {
     setTimeout(()=>{
       this.isActive = false
     },4300)
-    console.log(this.myElement.classList)
+
 
     console.log(`the component is now mounted.`)
   },

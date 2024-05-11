@@ -1,6 +1,6 @@
 import Cookies_ from "js-cookie";
 
-const HOSTLINK = "http://localhost:4000";
+const HOSTLINK = "https://localhost:3500";
 
 class ZimmoFlowServerConnection {
   constructor(host) {
