@@ -54,7 +54,9 @@
 
           <v-list-item
             v-for="collection in apiResponseCollection"
-            :key="collection"
+            link="true"
+            :to="`/response/${collection}`"
+            :key="collection  + 'jfy'"
             v-bind="props"
             prepend-icon="mdi-arrow-right-bottom"
             :title="collection"
@@ -74,12 +76,13 @@
 
           <v-list-item
             link="true"
+            :to="`/result/${collection}`"
             v-for="collection in ApiResultCollection"
-            :key="collection"
+            :key="collection + 'kjbt'"
             v-bind="props"
             prepend-icon="mdi-arrow-right-bottom"
             :title="collection"
-            :value="collection"
+            :value="collection + 'khjbt'"
           ></v-list-item>
 
         </v-list-group>

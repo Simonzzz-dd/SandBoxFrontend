@@ -1,6 +1,6 @@
 import Cookies_ from "js-cookie";
 
-const HOSTLINK = "https://localhost:3500";
+const HOSTLINK = "http://localhost:4000";
 
 class ZimmoFlowServerConnection {
   constructor(host) {
@@ -114,7 +114,7 @@ class ZimmoFlowServerConnection {
   }
 
   async ApiRequestDocuments({collectionName}) {
-    const response = await fetch(`${this.host}/app/apiRequestDouments/`, {
+    const response = await fetch(`${this.host}/app/apiRequestDocuments/`, {
       method: "POST",
       mode: "cors",
       // cache: 'no-cache',
@@ -137,6 +137,57 @@ class ZimmoFlowServerConnection {
       throw new Error(`Failed to login: ${error.error}`);
     }
   }
+
+  async ApiResponseDocuments({collectionName}) {
+    const response = await fetch(`${this.host}/app/apiResponseDocuments/`, {
+      method: "POST",
+      mode: "cors",
+      // cache: 'no-cache',
+      // credentials: 'include',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({collectionName}),
+      redirect: "follow",
+      // referrerPolicy: 'no-referrer',
+    });
+
+    if (response.ok) {
+      const responseData = await response.json();
+      // You can perform additional processing on the response data here if needed
+      return { responseData };
+    } else {
+      const error = await response.json();
+      console.log(error);
+      throw new Error(`Failed to login: ${error.error}`);
+    }
+  }
+
+  async ApiResultDocuments({collectionName}) {
+    const response = await fetch(`${this.host}/app/apiResultDocuments/`, {
+      method: "POST",
+      mode: "cors",
+      // cache: 'no-cache',
+      // credentials: 'include',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({collectionName}),
+      redirect: "follow",
+      // referrerPolicy: 'no-referrer',
+    });
+
+    if (response.ok) {
+      const responseData = await response.json();
+      // You can perform additional processing on the response data here if needed
+      return { responseData };
+    } else {
+      const error = await response.json();
+      console.log(error);
+      throw new Error(`Failed to login: ${error.error}`);
+    }
+  }
+
 }
 
 const ConnectionMiddleware = new ZimmoFlowServerConnection(HOSTLINK);

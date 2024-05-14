@@ -47,9 +47,9 @@
             v-for="item in tableBody"
             :key="item._id"
           >
-            <td class="text-left pa-3 pb-3 pt-2 pl-4 table-header" style="border-bottom: 1px solid #505050; max-width: 300px" v-for="header_ in tableHeader" :key="header_">{{ item[header_] }}</td>
+            <td class="text-left pa-3 pb-3 pt-2 pl-4 table-header" style="border-bottom: 1px solid #505050" v-for="header_ in tableHeader" :key="header_">{{ item[header_] }}</td>
             <td class="text-left pa-3 pb-3 pt-2 pl-4 table-header" style="border-bottom: 1px solid #505050">
-              <v-btn append-icon="mdi-web" flat variant="text" @click="()=>viewBody(item.api_req_body)">View Api</v-btn>
+              <v-btn append-icon="mdi-web" flat variant="text" @click="()=>viewBody(item.api_res_body)">View Api</v-btn>
             </td>
           </tr>
         </tbody>
@@ -76,7 +76,7 @@ export default {
     const tableHeader = ref([]);
     const tableBody = ref([]);
     onMounted(() => {
-      ConnectionMiddleware.ApiRequestDocuments({
+      ConnectionMiddleware.ApiResponseDocuments({
         collectionName: this.$route.params.type,
       })
         .then((res) => {
@@ -86,7 +86,7 @@ export default {
             // .slice(documents_.length - 20, documents_.length)
             .map((doc) => {
               const filteredDoc = Object.keys(doc).filter((ele) => {
-                return ele !== "_id" && ele !== "__v" && ele !== "api_req_body";
+                return ele !== "_id" && ele !== "__v" && ele !== "api_res_body";
               });
               return filteredDoc;
             });
@@ -129,7 +129,7 @@ export default {
     "$route.params.type": function (newType) {
       console.log(newType)
       this.tableHeader = []
-      ConnectionMiddleware.ApiRequestDocuments({
+      ConnectionMiddleware.ApiResponseDocuments({
         collectionName: this.$route.params.type,
       })
         .then((res) => {
@@ -139,7 +139,7 @@ export default {
             // .slice(documents_.length - 10, documents_.length)
             .map((doc) => {
               const filteredDoc = Object.keys(doc).filter((ele) => {
-                return ele !== "_id" && ele !== "__v" && ele !== "api_req_body";
+                return ele !== "_id" && ele !== "__v" && ele !== "api_res_body";
               });
               return filteredDoc;
             });

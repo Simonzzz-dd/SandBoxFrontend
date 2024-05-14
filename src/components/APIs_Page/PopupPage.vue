@@ -2,14 +2,14 @@
   <div class="text-center">
     <div style="display: none;">{{ computedValue }}</div>
       <v-dialog
-        @click="RemPopup"
+
         v-model="dialog"
         activator="parent"
         width="auto"
         theme="dark"
       >
-        <v-card color="#222222" @click="RemPopup">
-          <div class="d-flex justify-right pt-2"><v-icon icon="mdi-close" size="40"></v-icon></div>
+        <v-card color="#222222" >
+          <div class="d-flex justify-right pt-2"><v-icon @click="RemPopup" icon="mdi-close" size="40"></v-icon></div>
           <v-card-text>
             {{ message }}
           </v-card-text>
